@@ -8,7 +8,21 @@
 </head>
 <body>
 
-<%= yield %>
+  <nav>
+    <div class="nav-wrapper blue-grey">
+      <a href="#!" class="brand-logo">HealthDocs</a>
+      <ul class="right hide-on-med-and-down">
+        <% if user_logged_in? %>
+          <li><%= link_to('Logout', logout_path, method: :DELETE) %></li>
+        <% else %>
+          <li><%= link_to 'Create Account', new_user_path %></li>
+          <li><%= link_to 'Login', new_login_path %></li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+
+    <%= yield %>
 
 </body>
 </html>
