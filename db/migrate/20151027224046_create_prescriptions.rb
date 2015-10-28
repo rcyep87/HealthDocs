@@ -1,12 +1,12 @@
 class CreatePrescriptions < ActiveRecord::Migration
   def change
     create_table :prescriptions do |t|
-      t.string :name
-      t.integer :dosage
-      t.string :frequency
-      t.boolean :brand
-      t.date :date_prescribed
-      t.date :refill_till
+      t.string :name,            null: false
+      t.integer :dosage,         null: false
+      t.string :frequency,       null: false
+      t.boolean :brand,          null: false
+      t.date :date_prescribed,   null: false
+      t.date :refill_till,       null: false
       t.string :rx_notes
       t.belongs_to :user, index: true, foreign_key: true
 
