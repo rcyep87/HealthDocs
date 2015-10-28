@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20151027224506) do
     t.integer  "out_net_deduct_fam"
     t.integer  "co_ins_percent"
     t.integer  "out_of_pocket_max",  null: false
-    t.date     "renewal_date"
+    t.date     "renewal_date",       null: false
     t.integer  "user_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
@@ -50,16 +50,16 @@ ActiveRecord::Schema.define(version: 20151027224506) do
   add_index "med_coverages", ["user_id"], name: "index_med_coverages_on_user_id", using: :btree
 
   create_table "prescriptions", force: :cascade do |t|
-    t.string   "name",            null: false
-    t.integer  "dosage",          null: false
-    t.string   "frequency",       null: false
-    t.boolean  "brand",           null: false
-    t.date     "date_prescribed", null: false
-    t.date     "refill_till",     null: false
+    t.string   "name",                            null: false
+    t.integer  "dosage",                          null: false
+    t.string   "frequency",                       null: false
+    t.boolean  "brand",           default: false
+    t.date     "date_prescribed",                 null: false
+    t.date     "refill_till"
     t.string   "rx_notes"
     t.integer  "user_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   add_index "prescriptions", ["user_id"], name: "index_prescriptions_on_user_id", using: :btree
@@ -83,15 +83,13 @@ ActiveRecord::Schema.define(version: 20151027224506) do
   add_index "steps", ["user_id"], name: "index_steps_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "first_name",      null: false
+    t.string   "first_name",  null: false
     t.string   "middle_name"
-    t.string   "last_name",       null: false
-    t.date     "dob",             null: false
-    t.string   "ssn",             null: false
-    t.string   "email",           null: false
-    t.string   "password_digest", null: false
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string   "last_name",   null: false
+    t.date     "dob",         null: false
+    t.string   "ssn",         null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "visits", force: :cascade do |t|
